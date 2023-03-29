@@ -143,7 +143,7 @@ const setModal = (photo) => {
     imgContainer.appendChild(imgEl);
     modalBody.appendChild(imgEl);
 }
-
+/*
 const createCarousel = (photos) => {
     const carouselId = "carousel";
     const photosPerRow = 4;
@@ -198,6 +198,7 @@ const createCarousel = (photos) => {
     divCarousel.appendChild(divContainer);
     main.appendChild(divCarousel);
 }
+*/
 
 document.getElementById("load-main").onclick = (e) => handleFetch(e.target.name);
 document.getElementById("load-secondary").onclick = (e) => handleFetch(e.target.name);
