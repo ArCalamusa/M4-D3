@@ -18,8 +18,11 @@ const fetchApi = (queryString) => {
             })
         })
         .catch(e => {
-            createAlert(e.message, "Qui c'è un errore!");
-            throw new Error(e.message);
+            if(queryString == ""){
+                return alert('inserire un valore');
+                //se non si inserisce testo
+            }
+
         })
 }
 
@@ -143,62 +146,6 @@ const setModal = (photo) => {
     imgContainer.appendChild(imgEl);
     modalBody.appendChild(imgEl);
 }
-/*
-const createCarousel = (photos) => {
-    const carouselId = "carousel";
-    const photosPerRow = 4;
-    let numberOfItems = Math.ceil(photos.length / photosPerRow);
-    let divCarousel = document.createElement("div");
-    divCarousel.id = carouselId;
-    let divContainer = document.createElement("div");
-    divContainer.className = "container";
-    divCarousel.className = "carousel slide d-none d-md-block py-4 position-relative bg-light";
-    let aPrev = document.createElement("a");
-    aPrev.className = "carousel-control-prev";
-    aPrev.href = "#" + carouselId;
-    aPrev.role = "button";
-    aPrev.setAttribute("data-slide", "prev");
-    aPrev.innerHTML = `    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>`;
-    let aNext = document.createElement("a");
-    aNext.className = "carousel-control-next";
-    aNext.href = "#" + carouselId;
-    aNext.role = "button";
-    aNext.setAttribute("data-slide", "next");
-    aNext.innerHTML = `    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>`;
-    divCarousel.append(aPrev, aNext);
-    divCarousel.setAttribute("data-ride", "carousel");
-    let divCarouselInner = document.createElement("div");
-    divCarouselInner.className = "carousel-inner";
-    let divCarouselItems = [];
-    for (let i = 0; i < numberOfItems; i++) {
-        let photosSliced = photos.slice(i * photosPerRow, (i + 1) * photosPerRow);
-        let carouselItem = document.createElement("div");
-        carouselItem.className = "carousel-item";
-        if (i === 0) {
-            carouselItem.classList.add("active");
-        }
-        let rowDiv = document.createElement("div");
-        rowDiv.className = "row";
-        for (let photo of photosSliced) {
-            let img = document.createElement("img");
-            img.src = photo.src.landscape;
-            img.className = "img-fluid";
-            let colDiv = document.createElement("div");
-            colDiv.appendChild(img);
-            colDiv.className = "col-md-3 d-flex align-items-center"
-            rowDiv.appendChild(colDiv);
-        }
-        carouselItem.appendChild(rowDiv);
-        divCarouselItems.push(carouselItem);
-    }
-    divCarouselInner.append(...divCarouselItems);
-    divContainer.appendChild(divCarouselInner);
-    divCarousel.appendChild(divContainer);
-    main.appendChild(divCarousel);
-}
-*/
 
 document.getElementById("load-main").onclick = (e) => handleFetch(e.target.name);
 document.getElementById("load-secondary").onclick = (e) => handleFetch(e.target.name);
