@@ -1,4 +1,4 @@
-const headers = {Authorization: "KaIO0HoWKCG5EMCBozFNFPW2l1jyNMdEuyKiwI42y6zCb1OBmx2CPWgo"}
+const headers = {"Authorization": "KaIO0HoWKCG5EMCBozFNFPW2l1jyNMdEuyKiwI42y6zCb1OBmx2CPWgo"}
 
 const main = document.getElementsByTagName("main")[0];
 
