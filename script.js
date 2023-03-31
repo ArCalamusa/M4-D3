@@ -1,4 +1,4 @@
-const headers = {"Authorization": "KaIO0HoWKCG5EMCBozFNFPW2l1jyNMdEuyKiwI42y6zCb1OBmx2CPWgo"}
+const headers = {Authorization: "KaIO0HoWKCG5EMCBozFNFPW2l1jyNMdEuyKiwI42y6zCb1OBmx2CPWgo"}
 
 const main = document.getElementsByTagName("main")[0];
 
@@ -12,17 +12,15 @@ const fetchApi = (queryString) => {
                     let onlyUrls = json.photos.map(photo => photo.src.original);
                     console.log(onlyUrls);
                     return json.photos;
-                }else {
+                } else {
                     throw new Error(json.code);
                 }
             })
         })
         .catch(e => {
-            if(queryString == ""){
+            console.log('Error: ' + e);
                 return alert('inserire un valore');
                 //se non si inserisce testo
-            }
-
         })
 }
 
@@ -118,7 +116,7 @@ const createCard = (photo) => {
     buttonView.onclick = () => setModal(photo);
     let buttonHide = document.createElement("button");
     buttonHide.type = "button";
-    buttonHide.innerText = "Hide";
+    buttonHide.innerText = "Nascondi";
     buttonView.classList.add("btn", "btn-sm", "btn-outline-secondary");
     buttonHide.classList.add("btn", "btn-sm", "btn-outline-secondary");
     buttonHide.onclick = event => hideElement(colDiv);
@@ -146,7 +144,6 @@ const setModal = (photo) => {
     imgContainer.appendChild(imgEl);
     modalBody.appendChild(imgEl);
 }
-
 document.getElementById("load-main").onclick = (e) => handleFetch(e.target.name);
 document.getElementById("load-secondary").onclick = (e) => handleFetch(e.target.name);
 document.getElementById("load-other").onclick = () => {
